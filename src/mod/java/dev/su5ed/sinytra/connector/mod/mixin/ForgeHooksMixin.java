@@ -22,7 +22,7 @@ import java.util.Map;
 @Mixin(ForgeHooks.class)
 public abstract class ForgeHooksMixin {
 
-    @Inject(method = "getVanillaFluidType", at = @At(value = "NEW", target = "java/lang/RuntimeException"), remap = false, cancellable = true)
+    @Inject(method = "getVanillaFluidType", at = @At(value = "INVOKE", target = "Ljava/lang/RuntimeException;<init>(Ljava/lang/String;)V"), remap = false, cancellable = true)
     private static void getFabricVanillaFluidType(Fluid fluid, CallbackInfoReturnable<FluidType> cir) {
         FluidType fabricFluidType = FluidHandlerCompat.getFabricFluidType(fluid);
         if (fabricFluidType != null) {
